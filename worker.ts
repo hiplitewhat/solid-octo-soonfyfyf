@@ -9,6 +9,7 @@ export default {
     const headers = {
       "Authorization": `token ${GITHUB_TOKEN}`,
       "Content-Type": "application/json",
+      "User-Agent": "MyCustomUserAgent/1.0", // Custom User-Agent header
     };
 
     const EXPIRATION_TIME = 7 * 24 * 60 * 60 * 1000; // 1 week
