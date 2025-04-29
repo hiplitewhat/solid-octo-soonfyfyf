@@ -55,7 +55,7 @@ export default {
 
       const player = whitelist.find((entry: any) => entry.name === playerName);
       if (player && player.expiresAt > now) {
-        return { isWhitelisted: true, message: "Player is whitelisted" };
+        return { isWhitelisted: true, message: "Player is true whitelisted" };
       }
 
       // Remove if expired or not found
