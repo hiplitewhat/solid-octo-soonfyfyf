@@ -1,26 +1,26 @@
 export default {
   async fetch(request, env, ctx) {
-    const urls = [
-      'https://foil-interesting-recess.glitch.me/health',
-      'https://rift-nutritious-friction.glitch.me/',
-      'https://example2.com/health'
-    ];
+    const url = "https://foil-interesting-recess.glitch.me/health";
 
-    let results = '';
+    try {
+      const start = Date.now();
+      const response = await fetch(url, {
+        method: "GET",
+        headers: {
+          "User-Agent": "Cloudflare-Worker-Ping",
+          "Accept": "*/*",
+        },
+      });
+      const end = Date.now();
 
-    for (const url of urls) {
-      try {
-        const response = await fetch(url);
-        const body = await response.text();
-        results += `URL: ${url}\nStatus: ${response.status}\nBody:\n${body}\n\n`;
-      } catch (error) {
-        results += `Failed to fetch ${url}:\n${error.message}\n\n`;
-      }
+      const body = await response.text();
+
+      return new Response(
+        `Status: ${response.status}\nTime: ${end - start} ms\nBody: ${body}`,
+        { status: 200 }
+      );
+    } catch (err) {
+      return new Response(`Fetch error: ${err.message}`, { status: 500 });
     }
-
-    return new Response(results, {
-      status: 200,
-      headers: { "content-type": "text/plain" }
-    });
   }
 };
