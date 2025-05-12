@@ -2,7 +2,7 @@ export default {
   async fetch(request, env, ctx) {
     const urls = [
       'https://foil-interesting-recess.glitch.me/health',
-      'https://yourapp.glitch.me/',
+      'https://rift-nutritious-friction.glitch.me/',
       'https://example2.com/health'
     ];
 
