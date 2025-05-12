@@ -1,7 +1,7 @@
 export default {
   async fetch(request, env, ctx) {
     const url = ["https://foil-interesting-recess.glitch.me/health",
-                 ""];
+                 "https://rift-nutritious-friction.glitch.me/"];
 
     try {
       const start = Date.now();
