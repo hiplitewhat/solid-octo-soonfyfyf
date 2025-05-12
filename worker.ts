@@ -6,16 +6,19 @@ export default {
       'https://example2.com/health'
     ];
 
+    let results = '';
+
     for (const url of urls) {
       try {
         const response = await fetch(url);
-        console.log(`Pinged ${url} — Status: ${response.status}`);
+        const body = await response.text();
+        results += `URL: ${url}\nStatus: ${response.status}\nBody:\n${body}\n\n`;
       } catch (error) {
-        console.error(`Failed to ping ${url}:`, error);
+        results += `Failed to fetch ${url}:\n${error.message}\n\n`;
       }
     }
 
-    return new Response("Pinging complete.", {
+    return new Response(results, {
       status: 200,
       headers: { "content-type": "text/plain" }
     });
