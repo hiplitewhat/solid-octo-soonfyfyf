@@ -8,7 +8,7 @@ export default {
       const response = await fetch(url, {
         method: "GET",
         headers: {
-          "User-Agent": "Cloudflare-Worker-Ping",
+          "User-Agent": "chrome",
           "Accept": "*/*",
         },
       });
